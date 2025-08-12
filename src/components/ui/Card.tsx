@@ -1,9 +1,8 @@
-
-import  GetSimpsonsCharacterData  from "../../utils/fetchCharacters";
+import { useCharacters } from "../../hooks/useCharacter";
 
 
 export default function Card() {
-  const characters = GetSimpsonsCharacterData();
+  const {characters} = useCharacters();
   return (
       <div className="grid grid-cols-1 bg-[url('/CloudBackgroundImage.jpg')] bg-center bg-cover sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
   {characters.map((char) => (
