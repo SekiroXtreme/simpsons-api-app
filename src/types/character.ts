@@ -9,6 +9,33 @@ export type Characters = {
   portrait_path: string;
 }
 
+export type Episodes = {
+  id: number;
+  airdate: string;
+  description: string;
+  episode_number: number;
+  image_path: string;
+  name: string;
+  season: number;
+  synopsis: string;
+}
+
+export type Character = {
+  id:number;
+  age: number;
+  birthdate: string;
+  description: string;
+  first_appearance_ep_id: number;
+  first_appearance_sh_id: number;
+  gender: string;
+  name: string;
+  occupation: string;
+  phrases: string[];
+  portrait_path: string;
+  status: string;
+  first_appearance_ep: Episodes[];
+}
+
 export type CharactersResponse = {
   count: number;
   next: string;
