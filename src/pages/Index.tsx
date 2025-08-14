@@ -7,7 +7,7 @@ export default function Index(){
     <BrowserRouter> 
       <Routes> 
         <Route index element={<HomePage />}/>
-        <Route path="cardshow" element={<CardShow />} />
+        <Route path="/cardshow/:id" element={<CardShow />} />
       </Routes>
     </BrowserRouter>
   )

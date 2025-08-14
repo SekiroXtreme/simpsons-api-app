@@ -1,13 +1,15 @@
 import { useCharacters } from "../../hooks/useCharacter";
-
+import { Link } from "react-router-dom";
 
 export default function Card() {
   const {characters} = useCharacters();
   return (
       <div className="grid grid-cols-1 bg-[url('/CloudBackgroundImage.jpg')] bg-center bg-cover sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
   {characters.map((char) => (
-    <div
+    
+    <Link
       key={char.id}
+      to={`/cardshow/${char.id}`}
       className="bg-white mt-20 rounded-xl shadow-lg overflow-hidden border hover:shadow-2xl transition-shadow duration-300"
     >
       <div className="flex justify-center p-4 bg-gray-50">
@@ -51,7 +53,7 @@ export default function Card() {
 
         <p className="text-xs text-gray-400 mt-3">ID: {char.id}</p>
       </div>
-    </div>
+    </Link>
   ))}
 </div>
   );
