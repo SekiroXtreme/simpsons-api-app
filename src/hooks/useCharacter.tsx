@@ -1,25 +1,24 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import axios from "axios";
 import type { Characters, CharactersResponse } from "../types";
 
-const fetchCharacters = async () => {
-      const response = await axios.get<CharactersResponse>('https://thesimpsonsapi.com/api/characters')
-      return response.data.results
-    }
-
-
-export function useCharacters(id?: string) {
+export function useCharacters() {
   const [characters, setCharacters] = useState<Characters[]>([]);
 
-  useEffect( () => {
-    const getCharacters = async () => {
-      const response = await axios.get<CharactersResponse>('https://thesimpsonsapi.com/api/characters')
-      setCharacters(response.data.results)
-    }
+  useEffect(() => {
+    const fetchCharacters = async () => {
+      try {
+        const response = await axios.get<CharactersResponse>(
+          "https://thesimpsonsapi.com/api/characters"
+        );
+        setCharacters(response.data.results);
+      } catch (error) {
+        console.error("Error fetching characters:", error);
+      }
+    };
 
-    fetchCharacters()
-   
+    fetchCharacters();
   }, []);
 
-  return {characters}
+  return { characters };
 }
