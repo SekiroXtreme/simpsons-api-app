@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import type { Characters, CharactersResponse } from "../types";
 
-export function useCharacters() {
+export function useCharacters(id?:string) {
   const [characters, setCharacters] = useState<Characters[]>([]);
 
   useEffect(() => {
