@@ -10,7 +10,7 @@ export default function CardShow() {
   if (!characters.length) return <p className="text-center mt-4">Personaje no encontrado</p>;
 
   const character = characters[0] as Character;
-
+  
   return (
     <div className="w-full min-h-screen bg-[url('/CloudBackgroundImage.jpg')] bg-cover bg-center flex items-start justify-center p-4 lg:p-8">
       {/* Container principal */}
@@ -28,7 +28,7 @@ export default function CardShow() {
             <p><strong>Cumpleaños:</strong> {character?.birthdate || "Desconocido"}</p>
             <p><strong>Ocupación:</strong> {character.occupation}</p>
             <p><strong>Estado:</strong> {character.status}</p>
-            <p><strong>Primera aparición (episodio):</strong> {character.first_appearance_ep_id || 'Desconocido'}</p>
+            <p><strong>Primera aparición (episodio):</strong> {character.first_appearance_ep.name || 'Desconocido'}</p>
 
             <Link
               to="/"

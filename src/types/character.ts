@@ -33,7 +33,7 @@ export type Character = {
   phrases: string[];
   portrait_path: string;
   status: string;
-  first_appearance_ep: Episodes[];
+  first_appearance_ep: Episodes;
 }
 
 export type CharactersResponse = {
