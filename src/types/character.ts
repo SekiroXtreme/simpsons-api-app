@@ -43,3 +43,11 @@ export type CharactersResponse = {
   pages: number;
   results: Characters[];
 };
+
+export type EpisodesResponse = {
+  count: number;
+  next: string;
+  previous: null;
+  pages: number;
+  results: Episodes[];
+};
