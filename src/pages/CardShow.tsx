@@ -28,7 +28,7 @@ export default function CardShow() {
             <p><strong>Cumpleaños:</strong> {character?.birthdate || "Desconocido"}</p>
             <p><strong>Ocupación:</strong> {character.occupation}</p>
             <p><strong>Estado:</strong> {character.status}</p>
-            <p><strong>Primera aparición (episodio):</strong> {character.first_appearance_ep[0]?.name || 'Desconocido'}</p>
+            <p><strong>Primera aparición (episodio):</strong> {character.first_appearance_ep_id || 'Desconocido'}</p>
 
             <Link
               to="/"
