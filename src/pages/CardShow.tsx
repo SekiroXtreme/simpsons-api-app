@@ -1,10 +1,11 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate} from "react-router-dom";
 import { useCharacters } from "../hooks/useCharacter";
 import type { Character } from "../types";
 
 export default function CardShow() {
   const { id } = useParams<{ id: string }>();
   const { characters, loading } = useCharacters(id);
+  const navigate = useNavigate(); // <-- aquí
 
   if (loading) return <p className="text-center mt-4">Cargando...</p>;
   if (!characters.length) return <p className="text-center mt-4">Personaje no encontrado</p>;
@@ -29,12 +30,12 @@ export default function CardShow() {
             <p><strong>Cumpleaños:</strong> {character?.birthdate || "Desconocido"}</p>
             <p><strong>Ocupación:</strong> {character.occupation}</p>
             <p><strong>Estado:</strong> {character.status}</p>
-            <Link
-              to="/"
+             <button
+              onClick={() => navigate(-1)} // <-- vuelve a la página anterior
               className="mt-auto inline-block px-4 py-2 bg-yellow-400 text-black rounded-lg hover:bg-yellow-500 w-max"
-            >
+              >
               ← Volver
-            </Link>
+            </button>
           </div>
         </div>
 
@@ -82,9 +83,9 @@ export default function CardShow() {
                   {character.first_appearance_ep?.name || "Nombre no disponible"}
                 </h3>
                 <p className="text-sm text-gray-600">
-                  {character.first_appearance_ep?.airdate
-                    ? `Emitido el ${character.first_appearance_ep.airdate} | Temporada ${character.first_appearance_ep.season} | Episodio ${character.first_appearance_ep.episode_number}`
-                    : "Fecha/Temporada/Episodio desconocidos"}
+                  {`Emisión: ${character.first_appearance_ep?.airdate || "desconocida"} | 
+                    Temporada ${character.first_appearance_ep?.season || "desconocida"} | 
+                    Episodio ${character.first_appearance_ep?.episode_number || "desconocido"}`}
                 </p>
               </div>
             )}
