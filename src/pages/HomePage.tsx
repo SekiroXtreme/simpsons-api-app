@@ -9,6 +9,8 @@ export default function HomePage() {
         <PrincipalLogo
           title="Bienvenido a Springfield"
           description="Solo lo mejor de los Simpsons"
+          button={true}
+          buttonText="Saber más"
         />
       </div>
       <Card />
