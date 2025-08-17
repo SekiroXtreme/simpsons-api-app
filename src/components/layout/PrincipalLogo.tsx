@@ -9,7 +9,7 @@ return (
         <div className="flex flex-start p-5 ">
           <Link to="/">
             <button className="bg-yellow-400 text-black px-4 py-2 rounded-lg font-semibold hover:bg-yellow-500 hover:click transition">
-              Back
+              ← Return
             </button>
           </Link>
         </div> : null

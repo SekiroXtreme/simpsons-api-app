@@ -46,11 +46,11 @@ export default function EpisodesIndex() {
                 <strong>Episode:</strong> {episode.episode_number}
               </p>
               <p className="text-sm text-gray-600">
-                <strong>Emission:</strong> {episode.airdate ?? "Desconocida"}
+                <strong>Emission:</strong> {episode?.airdate || "Unknown"}
               </p>
 
               {/* Sinopsis breve */}
-              <p className="text-gray-700 line-clamp-3">{episode.synopsis || "Sin sinopsis disponible"}</p>
+              <p className="text-gray-700 line-clamp-3">{episode.synopsis || "No sypnosis available"}</p>
             </div>
           </CardItem>
         ))}
