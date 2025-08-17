@@ -8,10 +8,11 @@ export default function HomePage() {
     <div className="m-0 mx-auto h-screen">
       <div className="text-center ">
         <PrincipalLogo
-          title="Bienvenido a Springfield"
-          description="Solo lo mejor de los Simpsons"
+          title="Welcome to Springfield"
+          description="Just the best of the Simpsons Characters"
           button={true}
-          buttonText="Saber más"
+          buttonText="Know more"
+          buttonPrev={false}
         />
       </div>
       <Card>

@@ -13,10 +13,11 @@ export default function EpisodesIndex() {
       {/* Logo y bienvenida */}
       <div className="text-center">
         <PrincipalLogo
-          title="Bienvenido a Springfield"
-          description="Solo lo mejor de los Simpsons"
+          title="Look Out for Simpsons Adventures"
+          description="What are they up to?"
           button={false}
           buttonText=""
+          buttonPrev={true}
         />
       </div>
 
@@ -41,11 +42,11 @@ export default function EpisodesIndex() {
               {/* Nombre y detalles */}
               <h2 className="text-lg font-bold text-gray-800">{episode.name}</h2>
               <p className="text-sm text-gray-600">
-                <strong>Temporada:</strong> {episode.season} |{" "}
-                <strong>Episodio:</strong> {episode.episode_number}
+                <strong>Season:</strong> {episode.season} |{" "}
+                <strong>Episode:</strong> {episode.episode_number}
               </p>
               <p className="text-sm text-gray-600">
-                <strong>Emisión:</strong> {episode.airdate ?? "Desconocida"}
+                <strong>Emission:</strong> {episode.airdate ?? "Desconocida"}
               </p>
 
               {/* Sinopsis breve */}

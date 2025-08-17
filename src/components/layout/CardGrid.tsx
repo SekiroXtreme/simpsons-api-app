@@ -24,15 +24,15 @@ export default function CardGrid({ children, page, hasMore, loading, loadNext, l
           disabled={page <= 1 || loading}
           className="bg-yellow-400 text-black px-4 py-2 rounded-lg font-semibold hover:bg-yellow-500 transition"
         >
-          Anterior
+          Back
         </button>
-        <span className="px-4 py-2 text-gray-700">Página {page}</span>
+        <span className="px-4 py-2 text-gray-700">Page {page}</span>
         <button
           onClick={loadNext}
           disabled={!hasMore || loading}
           className="bg-yellow-400 text-black px-4 py-2 rounded-lg font-semibold hover:bg-yellow-500 transition"
         >
-          Siguiente
+          Next
         </button>
       </div>
     </div>
