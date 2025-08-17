@@ -1,4 +1,4 @@
-import PrincipalLogo from "../components/ui/PrincipalLogo";
+import PrincipalLogo from "../components/layout/PrincipalLogo";
 import { useEpisodes } from "../hooks/useEpisode";
 
 export default function EpisodesIndex(){

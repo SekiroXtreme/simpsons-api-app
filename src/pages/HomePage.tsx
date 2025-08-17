@@ -1,5 +1,6 @@
-import Card from '../components/ui/Card';
-import PrincipalLogo from '../components/ui/PrincipalLogo';
+import Card from '../components/layout/Card';
+import PrincipalLogo from '../components/layout/PrincipalLogo';
+import CharacterIndex from './CharactersIndex';
 
 export default function HomePage() {
   return(
@@ -13,7 +14,9 @@ export default function HomePage() {
           buttonText="Saber más"
         />
       </div>
-      <Card />
+      <Card>
+        <CharacterIndex />
+      </Card>
     </div>
     </>
   )

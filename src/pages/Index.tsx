@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import HomePage from "./HomePage"
-import CardShow from "./CardShow" 
+import CardShow from "./CharacterShow" 
 import EpisodesIndex from "./EpisodesIndex"
 
 export default function Index(){

@@ -1,4 +1,4 @@
-import  Button  from "./Button";
+import  Button  from "../ui/Button";
 
 
 export default function PrincipalLogo({ title, description, button, buttonText }: { title: string; description: string; button:boolean; buttonText:string }) {
