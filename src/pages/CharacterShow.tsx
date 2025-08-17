@@ -2,18 +2,18 @@ import { useParams, useNavigate} from "react-router-dom";
 import { useCharacters } from "../hooks/useCharacter";
 import type { Character } from "../types";
 
-export default function CardShow() {
+export default function CharacterShow() {
   const { id } = useParams<{ id: string }>();
   const { characters, loading } = useCharacters(id);
   const navigate = useNavigate(); // <-- aquí
 
-  if (loading) return <p className="text-center mt-4">Cargando...</p>;
-  if (!characters.length) return <p className="text-center mt-4">Personaje no encontrado</p>;
+  if (loading) return <p className="text-center mt-4">Loading...</p>;
+  if (!characters.length) return <p className="text-center mt-4">Character not Found</p>;
 
   const character = characters[0] as Character;
 
   return (
-    <div className="w-full min-h-screen bg-[url('/CloudBackgroundImage.jpg')] bg-cover bg-center flex items-start justify-center p-4 lg:p-8">
+    <div className="w-full min-h-screen bg-[url('/CloudBackgroundImage.jpg')] bg-cover bg-center flex items-start justify-center p-8 lg:p-8">
       {/* Container principal */}
       <div className="p-4 bg-white w-full max-w-7xl rounded-xl shadow-lg flex flex-col lg:flex-row gap-6 overflow-hidden h-auto lg:h-[85vh]">
         
@@ -26,15 +26,15 @@ export default function CardShow() {
           />
           <div className="p-4 flex flex-col gap-3 flex-1">
             <h1 className="text-2xl font-bold">{character.name}</h1>
-            <p><strong>Edad:</strong> {character?.age || "Desconocido"}</p>
-            <p><strong>Cumpleaños:</strong> {character?.birthdate || "Desconocido"}</p>
-            <p><strong>Ocupación:</strong> {character.occupation}</p>
-            <p><strong>Estado:</strong> {character.status}</p>
+            <p><strong>Age:</strong> {character?.age || "Unknown"}</p>
+            <p><strong>Birthdate:</strong> {character?.birthdate || "Unknown"}</p>
+            <p><strong>Occupation:</strong> {character.occupation}</p>
+            <p><strong>Status:</strong> {character.status}</p>
              <button
               onClick={() => navigate(-1)} // <-- vuelve a la página anterior
               className="mt-auto inline-block px-4 py-2 bg-yellow-400 text-black rounded-lg hover:bg-yellow-500 w-max"
               >
-              ← Volver
+              ← Return
             </button>
           </div>
         </div>
@@ -47,7 +47,7 @@ export default function CardShow() {
             
             {/* Phrases */}
             <div className="flex flex-col gap-3">
-              <h2 className="text-lg font-bold mb-2 ">Frases</h2>
+              <h2 className="text-lg font-bold mb-2 ">Phrases</h2>
               {character.phrases.length ? (
                 character.phrases.map((phrase, index) => (
                   <p
@@ -58,21 +58,21 @@ export default function CardShow() {
                   </p>
                 ))
               ) : (
-                <p className="text-gray-500 italic">No hay frases disponibles</p>
+                <p className="text-gray-500 italic">There're no Phrases Available</p>
               )}
             </div>
 
             {/* Description */}
             <div>
-              <h2 className="text-lg font-bold mb-2">Descripción</h2>
+              <h2 className="text-lg font-bold mb-2">Description</h2>
               <p className="text-gray-700">{character.description}</p>
             </div>
 
             {/* Primera aparición */}
             <div>
-              <h2 className="text-lg font-bold mb-2">Primera aparición del personaje</h2>
+              <h2 className="text-lg font-bold mb-2">First Appearance</h2>
               <p>
-                {character.first_appearance_ep?.description || "Desconocido"}
+                {character.first_appearance_ep?.description || "Unknown"}
               </p>
             </div>
 
@@ -83,9 +83,9 @@ export default function CardShow() {
                   {character.first_appearance_ep?.name || "Nombre no disponible"}
                 </h3>
                 <p className="text-sm text-gray-600">
-                  {`Emisión: ${character.first_appearance_ep?.airdate || "desconocida"} | 
-                    Temporada ${character.first_appearance_ep?.season || "desconocida"} | 
-                    Episodio ${character.first_appearance_ep?.episode_number || "desconocido"}`}
+                  {`Emission: ${character.first_appearance_ep?.airdate || "unknown"} | 
+                    Season ${character.first_appearance_ep?.season || "unknown"} | 
+                    Episode ${character.first_appearance_ep?.episode_number || "unknown"}`}
                 </p>
               </div>
             )}
@@ -94,7 +94,7 @@ export default function CardShow() {
             {character.first_appearance_ep?.image_path && (
               <img
                 src={`https://cdn.thesimpsonsapi.com/500${character.first_appearance_ep.image_path}`}
-                alt={character.first_appearance_ep.name || "Imagen del episodio"}
+                alt={character.first_appearance_ep.name || "Epissode_name"}
                 className="w-full h-60 object-cover rounded-lg mt-2"
               />
             )}
@@ -102,7 +102,7 @@ export default function CardShow() {
             {/* Sinopsis */}
             {character.first_appearance_ep?.synopsis && (
               <div>
-                <h4 className="text-md font-bold mt-2 mb-1">Sinopsis</h4>
+                <h4 className="text-md font-bold mt-2 mb-1">Synopsis</h4>
                 <p className="text-gray-700">{character.first_appearance_ep.synopsis}</p>
               </div>
             )}

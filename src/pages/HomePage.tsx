@@ -1,5 +1,6 @@
-import Card from '../components/ui/Card';
-import PrincipalLogo from '../components/ui/PrincipalLogo';
+import Card from '../components/layout/Card';
+import PrincipalLogo from '../components/layout/PrincipalLogo';
+import CharacterIndex from './CharactersIndex';
 
 export default function HomePage() {
   return(
@@ -7,11 +8,16 @@ export default function HomePage() {
     <div className="m-0 mx-auto h-screen">
       <div className="text-center ">
         <PrincipalLogo
-          title="Bienvenido a Springfield"
-          description="Solo lo mejor de los Simpsons"
+          title="Welcome to Springfield"
+          description="Just the best of the Simpsons Characters"
+          button={true}
+          buttonText="Know more"
+          buttonPrev={false}
         />
       </div>
-      <Card />
+      <Card>
+        <CharacterIndex />
+      </Card>
     </div>
     </>
   )
