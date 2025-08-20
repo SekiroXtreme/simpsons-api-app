@@ -5,7 +5,7 @@ export default function LayoutContainer() {
   return (
     <div>
       <Navbar />
-      <main className="p-4">
+      <main>
         <Outlet />
       </main>
     </div>

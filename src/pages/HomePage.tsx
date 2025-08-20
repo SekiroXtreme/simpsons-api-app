@@ -10,8 +10,8 @@ export default function HomePage() {
         <PrincipalLogo
           title="Welcome to Springfield"
           description="Just the best of the Simpsons Characters"
-          button={true}
-          buttonText="Know more"
+          button={false}
+          buttonText=""
           buttonPrev={false}
         />
       </div>
