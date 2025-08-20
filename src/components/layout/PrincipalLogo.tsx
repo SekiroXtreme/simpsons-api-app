@@ -20,7 +20,7 @@ return (
           alt="The Simpsons Logo" 
           className="w-64 mb-8" 
         />
-        <h1 className="text-4xl text-white drop-shadow-md  font-bold mb-4">{title}</h1>
+        <h1 className="text-4xl text-white font-bold mb-4">{title}</h1>
         <p className="text-lg mb-5 text-white italic">{description}</p>
         {button ? 
         <Link to='/episodes'>
