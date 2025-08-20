@@ -7,7 +7,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-yellow-400 p-4 shadow-md relative">
+    <nav className="bg-yellow-400 p-4 shadow-md relative sticky top-0 ">
       <div className="flex justify-between items-center">
         {/* Botón hamburguesa (solo móvil) */}
         <button
