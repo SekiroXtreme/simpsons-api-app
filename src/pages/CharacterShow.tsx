@@ -22,9 +22,9 @@ export default function CharacterShow() {
           <img
             src={`https://cdn.thesimpsonsapi.com/500${character.portrait_path}`}
             alt={character.name}
-            className="w-full h-80 object-cover rounded-t-lg"
+            className="w-full h-1/2 object-cover rounded-t-lg"
           />
-          <div className="p-4 flex flex-col gap-3 flex-1">
+          <div className="p-3 flex flex-col gap-3 flex-1">
             <h1 className="text-2xl font-bold">{character.name}</h1>
             <p><strong>Age:</strong> {character?.age || "Unknown"}</p>
             <p><strong>Birthdate:</strong> {character?.birthdate || "Unknown"}</p>
