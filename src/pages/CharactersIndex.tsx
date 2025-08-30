@@ -69,15 +69,15 @@ export default function CharacterIndex() {
                 className="w-[15vh] h-full object-cover rounded-full border-4 border-yellow-400 shadow-md"
               />
               <h2 className="text-xl font-bold mb-4">{selectedChar.name}</h2>
-              <div className="flex flex-col gap-2">
-                <p className="text-gray-700">{selectedChar.description || "No description available"}</p>
+              <div className="flex flex-col gap-2 w-full">
+                <p className="text-gray-700 line-clamp-4">{selectedChar.description || "No description available"}</p>
                 <p className="font-bold">Phrases</p>
                 {selectedChar.phrases?.length ? (
                   <div className="mt-4 flex flex-wrap gap-2 justify-start">
                     {selectedChar.phrases.slice(0, 3).map((phrase, i) => (
                       <span
                         key={i}
-                        className="bg-yellow-400 text-black px-3 py-1 rounded-lg font-medium text-sm"
+                        className="bg-yellow-400 text-black px-3 py-1 rounded-lg font-medium text-sm line-clamp-3 max-w-[200px]"
                       >
                         {phrase}
                       </span>
@@ -89,8 +89,9 @@ export default function CharacterIndex() {
               </div>
               <button
                 onClick={() => {
-                  navigate(`/cardshow/${selectedChar.id}`);
+                  const id = selectedChar.id;
                   setSelectedChar(null);
+                  navigate(`/cardshow/${id}`);
                 }}
                 className="mt-4 px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg hover:bg-yellow-500"
               >

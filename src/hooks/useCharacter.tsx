@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import type { Characters, CharactersResponse, Character } from "../types";
+import type { Characters, Character, CharactersResponse } from "../types";
 import { useSearchParams } from "react-router-dom";
 
-export function useCharacters() {
-  const [characters, setCharacters] = useState<Characters[]>([]);
+export function useCharacters(id?: string) {
+  const [characters, setCharacters] = useState<Characters[] | Character[]>([]);
   const [loading, setLoading] = useState(true);
   const [hasMore, setHasMore] = useState(true);
 
+  // Leer y escribir el parámetro "page" en la URL
   const [searchParams, setSearchParams] = useSearchParams();
   const initialPage = parseInt(searchParams.get("page") || "1", 10);
   const [page, setPage] = useState(initialPage);
@@ -17,32 +18,44 @@ export function useCharacters() {
 
     const fetchCharacters = async () => {
       setLoading(true);
+
       try {
-        const response = await axios.get<CharactersResponse>(
-          `https://thesimpsonsapi.com/api/characters?page=${page}`
-        );
-        if (isMounted) {
-          setCharacters(response.data.results);
-          setHasMore(response.data.results.length > 0);
+        if (id) {
+          // Obtener un solo personaje
+          const response = await axios.get<Character>(
+            `https://thesimpsonsapi.com/api/characters/${id}`
+          );
+          if (isMounted){ 
+            setCharacters([response.data]);
+          }
+        } else {
+          // Obtener personajes por página
+          const response = await axios.get<CharactersResponse>(
+            `https://thesimpsonsapi.com/api/characters?page=${page}`
+          );
+          if (isMounted) {
+            setCharacters(response.data.results);
+            setHasMore(response.data.results.length > 0);
+          }
         }
       } catch (error) {
         console.error("Error fetching characters:", error);
-        if (isMounted) {
-          setCharacters([]);
-          setHasMore(false);
-        }
+        if (isMounted) setCharacters([]);
+        setHasMore(false);
       } finally {
         if (isMounted) setLoading(false);
       }
     };
 
     fetchCharacters();
-    setSearchParams({ page: page.toString() });
+
+    // actualizar URL si no es un personaje individual
+    if (!id) setSearchParams({ page: page.toString() });
 
     return () => {
       isMounted = false;
     };
-  }, [page, setSearchParams]);
+  }, [id, page, setSearchParams]);
 
   const loadNext = () => {
     if (hasMore) setPage((prev) => prev + 1);
@@ -53,39 +66,4 @@ export function useCharacters() {
   };
 
   return { characters, loading, page, hasMore, loadNext, loadPrev };
-}
-
-export function useCharacter(id: number | null) {
-  const [character, setCharacter] = useState<Character | null>(null);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    if (!id) return;
-
-    let isMounted = true;
-    const fetchCharacter = async () => {
-      setLoading(true);
-      try {
-        const response = await axios.get<Character>(
-          `https://thesimpsonsapi.com/api/characters/${id}`
-        );
-        if (isMounted) {
-          setCharacter(response.data);
-        }
-      } catch (error) {
-        console.error("Error fetching character:", error);
-        if (isMounted) setCharacter(null);
-      } finally {
-        if (isMounted) setLoading(false);
-      }
-    };
-
-    fetchCharacter();
-
-    return () => {
-      isMounted = false;
-    };
-  }, [id]);
-
-  return { character, loading };
 }
