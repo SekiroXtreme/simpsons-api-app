@@ -1,11 +1,25 @@
+import type { ReactNode } from "react";
 
-export default function Modal({open, onClose, children}){
-  return(
-    <div onClick={onClose} className={
-      `fixed inset-0 flex justify-center items-center transition-colors   ${open ? "visible bg-black/20" : "invisible"}`
-    }
+interface ModalProps {
+  open: boolean;
+  onClose: () => void;
+  children: ReactNode;
+}
+
+export default function Modal({ open, onClose, children }: ModalProps) {
+  return (
+    <div
+      onClick={onClose}
+      className={`fixed inset-0 flex justify-center items-center transition-colors ${
+        open ? "visible bg-black/20" : "invisible"
+      }`}
     >
-      {children}
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="bg-white rounded-md p-4"
+      >
+        {children}
+      </div>
     </div>
-  )
+  );
 }
