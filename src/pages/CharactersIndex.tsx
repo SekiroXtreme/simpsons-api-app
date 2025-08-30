@@ -11,7 +11,7 @@ export default function CharacterIndex() {
   const [selectedChar, setSelectedChar] = useState<Character | null>(null);
   const navigate = useNavigate();
 
-  if (loading) return <p className="text-center mt-4">Cargando...</p>;
+  if (loading) return <p className="text-center mt-4">Loading...</p>;
 
   return (
     <>
@@ -28,7 +28,7 @@ export default function CharacterIndex() {
               onClick={() => setSelectedChar(char as Character)}
               className="cursor-pointer p-4"
             >
-              <div className="flex justify-center p-4 bg-gray-50">
+              <div className="flex justify-center p-4">
                 <img
                   src={`https://cdn.thesimpsonsapi.com/500${char.portrait_path}`}
                   alt={char.name}

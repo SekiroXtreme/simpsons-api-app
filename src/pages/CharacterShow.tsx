@@ -24,12 +24,13 @@ export default function CharacterShow() {
             alt={character.name}
             className="w-full h-1/2 object-cover rounded-t-lg"
           />
-          <div className="p-3 flex flex-col gap-3 flex-1">
+          <div className="flex flex-col gap-3 flex-1">
             <h1 className="text-2xl font-bold">{character.name}</h1>
             <p><strong>Age:</strong> {character?.age || "Unknown"}</p>
             <p><strong>Birthdate:</strong> {character?.birthdate || "Unknown"}</p>
             <p><strong>Occupation:</strong> {character.occupation}</p>
             <p><strong>Status:</strong> {character.status}</p>
+            <p><strong>Gender:</strong> {character.gender}</p>
              <button
               onClick={() => navigate(-1)} // <-- vuelve a la página anterior
               className="mt-auto inline-block px-4 py-2 bg-yellow-400 text-black rounded-lg hover:bg-yellow-500 w-max"
